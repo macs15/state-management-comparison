@@ -2,11 +2,12 @@ import Link from 'next/link';
 import NavLinks from '@/app/ui/dashboard/nav-links';
 import AcmeLogo from '@/app/ui/acme-logo';
 import { PowerIcon } from '@heroicons/react/24/outline';
-import { useCount } from '@/app/contexts/count';
 import { useRenderCounter } from '@/app/hooks/useRenderCounter';
+import { useCounterStore } from '@/app/lib/providers/counter-provider';
 
 export default function SideNav() {
-  const { interval, setInterval } = useCount();
+  // const { interval, setInterval } = useCount();
+  const { interval, setInterval } = useCounterStore((s) => s);
   const renderCount = useRenderCounter();
 
   return (

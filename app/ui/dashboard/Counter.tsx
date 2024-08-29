@@ -1,9 +1,10 @@
-import { useCount } from '@/app/contexts/count';
 import { useRenderCounter } from '@/app/hooks/useRenderCounter';
+import { useCounterStore } from '@/app/lib/providers/counter-provider';
 import { memo } from 'react';
 
 export const Counter = memo(() => {
-  const { increment, decrement, count } = useCount();
+  // const { increment, decrement, count } = useCount();
+  const { increment, decrement, count } = useCounterStore((s) => s);
   const renderCount = useRenderCounter();
 
   return (
