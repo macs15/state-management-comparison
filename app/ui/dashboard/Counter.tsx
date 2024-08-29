@@ -1,11 +1,20 @@
-import { useCount } from '@/app/contexts/count';
+'use client';
+
 import { useRenderCounter } from '@/app/hooks/useRenderCounter';
+import {
+  countAtom,
+  decrementCountAtom,
+  incrementCountAtom,
+} from '@/app/lib/store/counter';
+import { useAtom } from 'jotai';
 import { memo } from 'react';
 
 export const Counter = memo(() => {
-  const { increment, decrement, count } = useCount();
-  const renderCount = useRenderCounter();
+  const [count] = useAtom(countAtom);
+  const [, increment] = useAtom(incrementCountAtom);
+  const [, decrement] = useAtom(decrementCountAtom);
 
+  const renderCount = useRenderCounter();
   return (
     <>
       <section className="flex gap-4">
